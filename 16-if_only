@@ -1,1 +1,2 @@
-if [ root == 'guillaume' ]; then sudo chown vincent hello; fi
+#!/bin/bash
+if [ $(stat -c "%U" hello) == "guillaume" ]; then chown vincent hello; fi
