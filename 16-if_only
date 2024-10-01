@@ -1,0 +1,1 @@
+if [ root == 'guillaume' ]; then sudo chown vincent hello; fi
