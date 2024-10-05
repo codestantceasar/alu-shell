@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -empty | tr -d './' | sort -u
+find . -empty -print | awk -F/ '{print $NF}'
