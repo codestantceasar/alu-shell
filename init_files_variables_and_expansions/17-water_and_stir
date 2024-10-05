@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s\n" "$(echo "$WATER" | tr 'ewwatratewa' '0123456789' | tr 'ti.itirtrtr' '0123456789' | awk '{print $0}' | tr '0123456789' 'shtbeolhc')"
+printf "%s\n" "$(echo "$WATER" | tr 'ewwatratewa' '0123456789' | tr 'ti.itirtrtr' '0123456789' | tr '0123456789' 'shtbeolhc')"
