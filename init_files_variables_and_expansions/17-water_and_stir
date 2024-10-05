@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "obase=15; $(echo "$WATER" | awk '{for(i=1;i<=length($0);i++) sum+=index("ewwatratewa",substr($0,i,1))-1} END {print sum}') + $(echo "$STIR" | awk '{for(i=1;i<=length($0);i++) sum+=index("ti.itirtrtr",substr($0,i,1))-1} END {print sum}')" | bc | tr '0123456789ABCDEF' 'shtbeolhc'
