@@ -1,0 +1,13 @@
+#!/bin/bash
+# List all local variables
+echo "Local Variables:"
+set | grep -v '^[[:space:]]*$'  # This will list local variables and functions
+
+# List all environment variables
+echo -e "\nEnvironment Variables:"
+printenv
+
+# List all functions
+echo -e "\nFunctions:"
+declare -F
+
