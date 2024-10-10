@@ -1,9 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# This script tells the story of /etc/passwd using a while loop and IFS
 
 while IFS=: read -r username password uid gid gecos home shell
 do
-  if [ -z "$shell" ]; then
+  # Handle empty fields for 'shell' and 'gecos'
+  if [ -z "$shell" ] || [ "$shell" = "/usr/bin/passwd" ]; then
     shell="."
+  fi
+  if [ -z "$gecos" ]; then
+    gecos=""
   fi
   echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode $password, more info about the user here: $gecos"
 done < /etc/passwd
