@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script stops the '7-highlander' process using kill.
+
+# shellcheck disable=SC2009
+pid=$(ps aux | grep '7-highlander' | grep -v grep | awk '{print $2}')
+
+if [[ -z "$pid" ]]; then
+    echo "Process '7-highlander' not found."
+    exit 1
+fi
+
+kill "$pid"
+
+if [[ $? -eq 0 ]]; then
+    echo "Process '7-highlander' with PID $pid has been terminated."
+else
+    echo "Failed to terminate process '7-highlander' with PID $pid."
+    exit 1
+fi
