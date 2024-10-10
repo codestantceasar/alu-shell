@@ -12,7 +12,8 @@ case "$1" in
             echo "manage_my_process is already running."
             exit 1
         fi
-        sudo "$SCRIPT_PATH" &
+        # Start manage_my_process in the background and capture its PID
+        "$SCRIPT_PATH" &
         echo $! > "$PID_FILE"
         echo "manage_my_process started"
         ;;
@@ -21,6 +22,7 @@ case "$1" in
             echo "PID file not found. manage_my_process is not running."
             exit 1
         fi
+        # Terminate the process using the PID from the PID file
         kill "$(cat "$PID_FILE")"
         rm -f "$PID_FILE"
         echo "manage_my_process stopped"
@@ -29,9 +31,9 @@ case "$1" in
         if [ -f "$PID_FILE" ]; then
             kill "$(cat "$PID_FILE")"
             rm -f "$PID_FILE"
-            echo "manage_my_process stopped"
         fi
-        sudo "$SCRIPT_PATH" &
+        # Restart manage_my_process and capture the new PID
+        "$SCRIPT_PATH" &
         echo $! > "$PID_FILE"
         echo "manage_my_process restarted"
         ;;
@@ -40,3 +42,4 @@ case "$1" in
         exit 1
         ;;
 esac
+
