@@ -1,22 +1,7 @@
 #!/usr/bin/env bash
-# This script lists all currently running processes with hierarchy.
+# This script displays list of currently running processes
+# This script displays list of currently running processes
+# Display a user-oriented format
+# Show process hierarchy
 
-ps -eo user,lstart,command --forest | awk '
-NR==1 {
-    print "USER STARTED COMMAND"
-    next
-}
-{
-    user = $1
-    # lstart format: "Tue Feb 13 11:29:19 2023"
-    # Extract the time portion (HH:MM:SS)
-    time = $5 ":" $6 ":" $7
-    # Extract the command starting from the 8th field to capture full command with spaces
-    cmd = ""
-    for (i = 8; i <= NF; i++) {
-        cmd = cmd $i " "
-    }
-    # Remove the trailing space
-    sub(/ $/, "", cmd)
-    print user, time, cmd
-}'
+ps -a -x -u -f
